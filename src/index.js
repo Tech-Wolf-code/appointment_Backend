@@ -16,12 +16,13 @@ const app = express();
 
 app.use(
   cors({
-    origin: true, // allows ALL origins dynamically but maintains credentials
-    credentials: true, // allow cookies (refresh tokens)
+    origin: "https://appointment-frontend-three.vercel.app", 
+    credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
 app.use(express.json());
 app.use(cookieParser());
 
