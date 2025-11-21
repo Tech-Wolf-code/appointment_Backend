@@ -14,14 +14,29 @@ connectDB();
 
 const app = express();
 
+const allowedOrigins = [
+  "https://appointment-frontend-three.vercel.app",
+  "https://appointment-frontend-esjxxlyu7-rohits-projects-19c591c6.vercel.app",
+];
+
 app.use(
   cors({
-    origin: "https://appointment-frontend-three.vercel.app", 
+    origin: function (origin, callback) {
+      // allow requests with no origin (mobile apps, Postman)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
 
 app.use(express.json());
 app.use(cookieParser());
