@@ -15,7 +15,7 @@ connectDB();
 const app = express();
 
 const allowedOrigins = [
-  "https://www.itechcure.com/",
+  "https://www.itechcure.com",
   "https://appointment-frontend-three.vercel.app",
   "https://appointment-frontend-esjxxlyu7-rohits-projects-19c591c6.vercel.app",
 ];
